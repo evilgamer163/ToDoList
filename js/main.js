@@ -18,7 +18,7 @@ const renderDeal = () => {
     todoData.forEach((item, i) => {
         const li = document.createElement('li');
         li.classList.add('todo-item');
-
+        
         li.innerHTML = `
             <span class="text-todo">${item.value}</span>
             <div class="todo-buttons">
@@ -50,6 +50,14 @@ const renderDeal = () => {
             renderDeal();
         });
 
+        let todoItems = document.querySelectorAll('.todo-item');
+        todoItems.forEach( item => {
+            item.addEventListener('click', () => {
+                let todoText = item.childNodes[1];
+                console.log(todoText.textContent);
+            });
+        });
+
         localStorage.setItem('data', JSON.stringify(todoData));
     });
 };
@@ -67,3 +75,4 @@ todoControl.addEventListener('submit', (event) => {
 });
 
 renderDeal();
+
